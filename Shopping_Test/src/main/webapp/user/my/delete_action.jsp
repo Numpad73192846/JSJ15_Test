@@ -1,3 +1,5 @@
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="userDAO" class="shop.dao.UserRepository" />
@@ -11,5 +13,15 @@
     * 실패하면 "회원삭제가 안됐습니다..."라는 메시지를 출력한 후
     * update.jsp 페이지로 리다이렉트한다.
     */
+    String id = (String) session.getAttribute("loginId");
+	int result = userDAO.delete(id);
+	
+	if( result > 0 ) {
+		response.sendRedirect(request.getContextPath() + "/complete.jsp");
+	}
+	else {
+		
+		response.sendRedirect(request.getContextPath() + "/update.jsp");
+	}
     
 %>

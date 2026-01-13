@@ -1,3 +1,5 @@
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
 <%@page import="shop.dto.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="shop.dao.OrderRepository"%>
@@ -10,11 +12,15 @@
 	// 3. 세션에 주문내역 저장
 	// 4. 주문내역 페이지로 리다이렉트
 	// ----------------------------------------------------
+	request.getParameter("phone");
+	request.getParameter("order_pw");
+	
 
 	// TODO:
 	// 1. 파라미터 수집(전화번호, 주문비밀번호)
 	// - 파라미터: phone, orderPw
 	// - DB에서 주문내역 조회
+	request.getParameter("phone");
 	
 	
 	// TODO:
@@ -34,5 +40,6 @@
 	// TODO:
 	// 4. 주문내역 페이지로 리다이렉트
 	// - 리다이렉트 URL: /user/my/order.jsp
+	response.sendRedirect(request.getContextPath() + "/user/my/order.jsp");
 
 %>

@@ -1,6 +1,8 @@
 <!-- 
 	회원 가입 처리
  -->
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
 <%@page import="shop.dao.UserRepository"%>
 <%@page import="shop.dto.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -24,13 +26,34 @@
 	String phone = request.getParameter("phone");
 	String address = request.getParameter("address");
 	
-
+	if( pw == null || !pw.equals(pw_confirm) ) {
+		response.sendRedirect("join.jsp");
+		return;
+	}
+	
 	// TODO: User 객체에 회원 가입 정보를 설정한다.
-
+	user.setId(id);
+	user.setPassword(pw);
+	user.setName(name);
+	user.setGender(gender);
+	user.setBirth(birth);
+	user.setMail(email);
+	user.setPhone(phone);
+	user.setAddress(address);
+	
 	// TODO: 회원 정보 등록 요청
 	// UserRepository 객체를 생성하고 insert() 메서드를 호출하여 회원 정보를 데이터베이스에 저장한다.
 	// 회원 가입이 성공하면 complete.jsp 페이지로 리다이렉트한다.
 	// 실패하면 join.jsp 페이지로 리다이렉트한다.
+	UserRepository userDAO = new UserRepository();
+	int result = userDAO.insert(user);
+	
+	if ( result > 0 ) {
+		response.sendRedirect("complete.jsp?msg=1");
+	}
+	else {
+		response.sendRedirect("join.jsp");
+	}
 
 	
 %>
