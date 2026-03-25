@@ -19,6 +19,7 @@
 		}
 		
 		boolean login = false;
+		
 		if( loginId != null && !loginId.isEmpty() ) {
 			// response.sendRedirect(root + "/");
 			login = true;
@@ -69,7 +70,7 @@
 			      <!-- 로그인 시 -->
 			      <% if( login ) { %>
 		    	  <li class="nav-item">
-			        <a href="${ root }/user/my/index.jsp" class="nav-link link-body-emphasis">
+			        <a href="${ root }/user/my/detail.jsp" class="nav-link link-body-emphasis">
 			          마이 페이지
 			        </a>
 			      </li>

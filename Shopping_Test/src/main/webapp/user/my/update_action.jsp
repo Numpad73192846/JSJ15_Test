@@ -23,6 +23,7 @@
     // 수정한 유저객체 생성
     User user = new User();
     user.setId(id);
+    
     // 비밀번호는 만약 값이 없으면 기존비밀번호 그대로 사용, 값이 있다면 새로운 비밀번호로!
     if (pw == null || pw =="" ){
         pw = userDAO.getUserById(id).getPassword(); // 기존패스워드 가져옴

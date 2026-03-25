@@ -6,6 +6,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
+	OrderRepository orderDAO = new OrderRepository();
+
 	// TODO: 주문 조회 기능 구현
 	// 1. 파라미터 수집(전화번호, 주문비밀번호)
 	// 2. DB에서 주문내역 조회
@@ -20,7 +23,6 @@
 	// 1. 파라미터 수집(전화번호, 주문비밀번호)
 	// - 파라미터: phone, orderPw
 	// - DB에서 주문내역 조회
-	request.getParameter("phone");
 	
 	
 	// TODO:
@@ -29,6 +31,7 @@
 	// - 리턴타입: List<Product>
 	// - 파라미터: 전화번호, 주문비밀번호
 	// - 리턴값: 주문내역 리스트
+	List<Product> orderList = orderDAO.list(phone, orderPw);
 	
 	
 	// TODO:
@@ -36,10 +39,11 @@
 	// - 세션키: orderPhone, orderList
 	// - 세션값: 전화번호, 주문내역 리스트
 	
+	session.setAttribute("orderPhone", phone);
+	session.setAttribute("orderList", orderList);
 	
 	// TODO:
 	// 4. 주문내역 페이지로 리다이렉트
 	// - 리다이렉트 URL: /user/my/order.jsp
-	response.sendRedirect(request.getContextPath() + "/user/my/order.jsp");
 
 %>

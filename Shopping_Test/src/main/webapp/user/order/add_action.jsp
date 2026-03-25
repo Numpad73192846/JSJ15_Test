@@ -229,11 +229,9 @@
 	// 힌트: response.sendRedirect() 메소드 사용
 	// 힌트: URL 형식: root + "/user/order/complete.jsp?cartId=" + ship_cartId + "&addressName=" + URLEncoder.encode(ship_addressName, "UTF-8")
 	// 힌트: URLEncoder.encode()는 한글을 URL에서 사용 가능한 형식으로 인코딩합니다
-	response.sendRedirect(root + "/user/order/complete.jsp?cartId=" + ship_cartId + "&addressName=" + URLEncoder.encode(ship_addressName, "UTF-8"));
 	
 	// session.invalidate();		// 로그인 기능 적용 시, 로그아웃 처리되므로 수정
 	session.setAttribute("cartList", null);
-	
 	
 	// 배송 정보를 저장한 쿠키는 삭제
 	if( cookies != null ) {

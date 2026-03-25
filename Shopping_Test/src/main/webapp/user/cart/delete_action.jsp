@@ -1,6 +1,8 @@
 <%--
 	세션에서 장바구니 상품 삭제
  --%>
+<%@ include file="/layout/jstl.jsp" %>
+<%@ include file="/layout/common.jsp" %>
 <%@page import="shop.dto.Product"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,7 +14,7 @@
 	// 장바구니 전체 삭제
 	if( productId == null && cartId != null ) {
 		session.setAttribute("cartList", null);	
-		response.sendRedirect("cart.jsp");
+		response.sendRedirect(root + "/user/cart/detail.jsp");
 		return;
 	}
 
@@ -20,7 +22,7 @@
 	List<Product> cartList = (List<Product>) session.getAttribute("cartList");
 	
 	if( cartList == null ) {
-		response.sendRedirect("cart.jsp");
+		response.sendRedirect(root + "/user/cart/detail.jsp");
 		return;
 	}
 	
@@ -36,7 +38,7 @@
 		}
 	}
 	
-	response.sendRedirect("cart.jsp");
+	response.sendRedirect(root + "/user/cart/detail.jsp");
 	
 %>
 

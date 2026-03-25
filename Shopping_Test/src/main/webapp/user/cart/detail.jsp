@@ -87,7 +87,7 @@
 	
 		<!-- 버튼 영역 -->
 		<div class="d-flex justify-content-between align-items-center p-3">
-			<a href="deleteCart.jsp?cartId=<%= cartId %>" class="btn btn-lg btn-danger ">전체삭제</a>
+			<a href="delete_action.jsp?cartId=<%= cartId %>" class="btn btn-lg btn-danger ">전체삭제</a>
 			<a href="javascript:;" class="btn btn-lg btn-primary" onclick="order()">주문하기</a>
 		</div>
 	</div>

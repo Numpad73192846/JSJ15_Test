@@ -46,7 +46,7 @@
 	  <form action="login_action.jsp" method="post">
 	    <div class="form-floating">
 	      <input type="text" class="form-control" id="floatingInput" name="id" 
-	      		 value="<%= loginId %>" placeholder="아이디" autofocus>
+	      		 value="<%= rememberId %>" placeholder="아이디" autofocus>
 	      <label for="floatingInput">아이디</label>
 	    </div>
 	    <div class="form-floating">
@@ -57,7 +57,7 @@
 	    <div class="form-check text-start my-3 d-flex justify-content-around">
 	    	<div class="item">
 	    	  <%
-	    	  	if( rememberId != null && rememberId.equals("on") ) {
+	    	  	if( rememberId != null && !rememberId.isEmpty() ) {
 	    	  %>
 			      <input class="form-check-input" type="checkbox" name="remember-id" id="flexCheckDefault1"
 			      		 checked>

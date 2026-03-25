@@ -24,8 +24,8 @@ public class UserRepository extends JDBConnection {
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, user.getId());
-			psmt.setString(2, user.getName());
-			psmt.setString(3, user.getPassword());
+			psmt.setString(2, user.getPassword());
+			psmt.setString(3, user.getName());
 			psmt.setString(4, user.getGender());
 			psmt.setString(5, user.getBirth());
 			psmt.setString(6, user.getMail());
@@ -134,7 +134,7 @@ public class UserRepository extends JDBConnection {
 		int result = 0;
 		
 		String sql = "UPDATE user SET "
-				   + "password = ?, name = ?, gender = ?, birth = ? "
+				   + "password = ?, name = ?, gender = ?, birth = ?, "
 				   + "mail = ?, phone = ?, address = ? "
 				   + "WHERE id = ? ";
 		
@@ -333,20 +333,3 @@ public class UserRepository extends JDBConnection {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

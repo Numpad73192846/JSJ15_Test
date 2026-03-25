@@ -1,5 +1,6 @@
 <%@ include file="/layout/jstl.jsp" %>
 <%@ include file="/layout/common.jsp" %>
+<%@page import="shop.dao.UserRepository"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="userDAO" class="shop.dao.UserRepository" />
@@ -22,6 +23,24 @@
 	else {
 		
 		response.sendRedirect(request.getContextPath() + "/update.jsp");
+	}
+    
+    if (loginId == null || loginId.isEmpty()) {
+        response.sendRedirect("update.jsp");
+        return;
+    }
+    
+    int result = userDAO.delete(loginId);
+
+	if ( result > 0 ) {
+		session.invalidate();
+		response.sendRedirect("complete.jsp?msg=3");
+		return;
+	}
+	else {
+		out.println("<script>alert('회원삭제가 안됐습니다...');</script>)");
+		response.sendRedirect("update.jsp");
+		return;
 	}
     
 %>
